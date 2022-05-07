@@ -1,0 +1,30 @@
+package com.springtransaction.serviceimpl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.springtransaction.entity.Book;
+import com.springtransaction.repository.BookRepository;
+import com.springtransaction.service.BookService;
+
+
+@Service
+public class BookServiceImpl implements BookService {
+
+	@Autowired
+	private BookRepository bookRepository;
+
+	@Transactional(readOnly = true)
+	public void saveBook(Book book){
+
+		Book book1 = null;
+		// save book
+		book1 = bookRepository.save(book);
+		 
+		
+	}
+
+}
